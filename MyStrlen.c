@@ -1,23 +1,22 @@
 #include <stdio.h>
 #include <assert.h>
 
-int MyStrlen(const char* const p)
+size_t MyStrlen(const char* str)
 {
-	assert(p);
-	int i = 0;
-	while (*(p + i))
+	assert(str);
+	int len = 0;
+	while (*str)
 	{
-		i++;
+		str++;
+		len++;
 	}
-	return i;
+	return len;
 }
 
 int main()
 {
-	char arr[] = "abcdef";
-
-	int i = MyStrlen(arr);
-
-	printf("%d", i);
+	char str[10] = "abcdef";
+	int len = MyStrlen(str);
+	printf("%d\n", len);
 	return 0;
 }
