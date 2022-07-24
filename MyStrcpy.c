@@ -1,31 +1,22 @@
 #include <stdio.h>
 #include <assert.h>
 
-char* MyStrcpy(char* dest, const char* sour)
+char* MyStrcpy(char* destination, const char* source)
 {
-	char* temp = dest;
-	assert(dest != NULL);
-	assert(sour != NULL);
+	assert(destination && source);
+	char* temp = destination;
 
-	while (*sour)
-	{
-		*dest = *sour;
-		dest++;
-		sour++;
-	}
-	*dest = *sour;
+	while (*destination++ = *source++);
+
 	return temp;
 }
-
 int main()
 {
-	char arr1[20] = { 0 };
-	char arr2[] = "Hello World!";
-
-	char* p = MyStrcpy(arr1, arr2);
+	char str1[] = "abcdef";
+	char str2[20];
 	
-	printf("%s\n", arr1);
-	printf("%s\n", p);
-
+	char*p = MyStrcpy(str2, str1);
+	
+	printf("%s\n%s\n", str2, p);
 	return 0;
 }
