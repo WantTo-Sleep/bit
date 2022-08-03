@@ -21,7 +21,19 @@ testSeqList1()
 	SeqListPrint(&seq);
 	SeqListErase(&seq, 10);
 	SeqListErase(&seq, 4);
-	SeqListErase(&seq, 0);
+	SeqListErase(&seq, 1);
+	SeqListPrint(&seq);
+	SeqListPopBack(&seq);
+	SeqListPopBack(&seq);
+	SeqListPopBack(&seq);
+	SeqListPopBack(&seq);
+	SeqListPopBack(&seq);
+	SeqListPopBack(&seq);
+	SeqListPopBack(&seq);
+	SeqListPopBack(&seq);
+	SeqListPopBack(&seq);
+	SeqListPopBack(&seq);
+	SeqListPopBack(&seq);
 	SeqListPrint(&seq);
 
 	SeqListDestroy(&seq);

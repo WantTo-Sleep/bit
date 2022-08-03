@@ -4,7 +4,7 @@ void SeqListInit(SeqList* ps)
 {
 	assert(ps);
 
-	ps->size = 0;
+	ps->size = 1;
 	ps->capacity = 4;
 	ps->a = (SLDateType*)calloc(ps->capacity, sizeof(SLDateType));
 }
@@ -42,7 +42,7 @@ void SeqListPrint(SeqList* ps)
 {
 	assert(ps);
 
-	for (size_t i = 0; i < ps->size; ++i)
+	for (size_t i = 1; i < ps->size; ++i)
 	{
 		printf("%d ", ps->a[i]);
 	}
@@ -64,11 +64,11 @@ void SeqListPushFront(SeqList* ps, SLDateType x)
 
 	if (-1 == CheckCapacity(ps))
 		return;
-	for (size_t i = ps->size; i > 0; --i)
+	for (size_t i = ps->size; i > 1; --i)
 	{
 		ps->a[i] = ps->a[i - 1];
 	}
-	ps->a[0] = x;
+	ps->a[1] = x;
 	ps->size++;
 }
 // Œ≤…æ
@@ -76,6 +76,7 @@ void SeqListPopBack(SeqList* ps)
 {
 	assert(ps);
 
+	assert(ps->size != 0);
 	ps->size--;
 }
 // Õ∑…æ
@@ -83,18 +84,20 @@ void SeqListPopFront(SeqList* ps)
 {
 	assert(ps);
 
-	ps->size--;
-	for (size_t i = 0; i < ps->size; ++i)
+	assert(ps->size != 0);
+	
+	for (size_t i = 1; i + 1 < ps->size; ++i)
 	{
 		ps->a[i] = ps->a[i + 1];
 	}
+	ps->size--;
 }
 // À≥–Ú±Ì≤È’“
 int SeqListFind(SeqList* ps, SLDateType x)
 {
 	assert(ps);
 	
-	for (size_t i = 0; i < ps->size; i++)
+	for (size_t i = 1; i < ps->size; i++)
 	{
 		if (ps->a[i] == x)
 			return i;
@@ -119,6 +122,7 @@ void SeqListErase(SeqList* ps, size_t pos)
 {
 	assert(ps);
 
+	assert(ps->size != 0 && pos != 0);
 	for (size_t i = pos; i + 1 < ps->size; i++)
 	{
 		ps->a[i] = ps->a[i + 1];
