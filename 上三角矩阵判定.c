@@ -1,5 +1,4 @@
 #include <stdio.h>
-//иохЩ╫г╬ьуСеп╤╗
 int main()
 {
     int n = 0;
