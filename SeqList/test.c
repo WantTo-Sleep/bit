@@ -1,46 +1,36 @@
 #include "SeqList.h"
 
-testSeqList1()
-{
-	SeqList seq;
-	SeqListInit(&seq);
-
-	SeqListPushBack(&seq, 1);
-	SeqListPushBack(&seq, 2);
-	SeqListPushBack(&seq, 3);
-	SeqListPushBack(&seq, 4);
-	SeqListPrint(&seq);
-	SeqListPushFront(&seq, 5);
-	SeqListPushFront(&seq, 6);
-	SeqListPushFront(&seq, 7);
-	SeqListPushFront(&seq, 8);
-	SeqListPrint(&seq);
-	SeqListInsert(&seq, SeqListFind(&seq, 4), 10);
-	SeqListInsert(&seq, SeqListFind(&seq, 8), 9);
-	SeqListInsert(&seq, SeqListFind(&seq, 1), 0);
-	SeqListPrint(&seq);
-	SeqListErase(&seq, 10);
-	SeqListErase(&seq, 4);
-	SeqListErase(&seq, 1);
-	SeqListPrint(&seq);
-	SeqListPopBack(&seq);
-	SeqListPopBack(&seq);
-	SeqListPopBack(&seq);
-	SeqListPopBack(&seq);
-	SeqListPopBack(&seq);
-	SeqListPopBack(&seq);
-	SeqListPopBack(&seq);
-	SeqListPopBack(&seq);
-	SeqListPopBack(&seq);
-	SeqListPopBack(&seq);
-	SeqListPopBack(&seq);
-	SeqListPrint(&seq);
-
-	SeqListDestroy(&seq);
-}
+void DeletOne(SeqList* ps, SLDateType delet);
 
 int main()
 {
-	testSeqList1();
+	SeqList seq;
+	SeqListInit(&seq);
+	for (SLDateType i = 0; i < 9; ++i)
+	{
+		SeqListPushBack(&seq, i);
+		SeqListPushBack(&seq, 3);
+	}
+
+	SeqListPrint(&seq);
+	
+	printf("É¾³ý 3\n");
+	
+	DeletOne(&seq, 3);
+
+	SeqListPrint(&seq);
+
 	return 0;
+}
+
+void DeletOne(SeqList* ps, SLDateType delet)
+{
+	assert(ps);
+
+	int i = SeqListFind(ps, delet);
+	while (i != -1)
+	{
+		SeqListErase(ps, i);
+		i = SeqListFind(ps, delet);
+	}
 }
